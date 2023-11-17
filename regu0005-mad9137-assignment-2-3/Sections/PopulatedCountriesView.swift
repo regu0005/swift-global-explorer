@@ -6,30 +6,11 @@
 //
 
 import SwiftUI
-//import SVGKit
+import SVGKit
 
-struct Country {
-    var name: String
-    var detail: String
-    var population: String
-    var area: String
-    var imageName: String
-    var flagURL: String
-}
 
 struct PopulatedCountriesView: View {
-    
-    let countries = [
-        Country(name: "Afghanistan", detail: "Capital: Kabul", population: "40,218,234", area: "652,230 km²", imageName: "afghanistanImage", flagURL: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"),
-        Country(name: "Åland Islands", detail: "Capital: Mariehamn", population: "28,875", area: "1,580 km²", imageName: "alandIslandsImage", flagURL: "https://flagcdn.com/ax.svg"),
-        Country(name: "Albania", detail: "Capital: Tirana", population: "2,837,743", area: "28,748 km²", imageName: "albaniaImage", flagURL: "https://flagcdn.com/al.svg"),
-        Country(name: "Algeria", detail: "Capital: Algiers", population: "43,851,043", area: "2,381,741 km²", imageName: "algeriaImage", flagURL: "https://flagcdn.com/dz.svg"),
-        Country(name: "American Samoa", detail: "Capital: Pago Pago", population: "55,197", area: "199 km²", imageName: "americanSamoaImage", flagURL: "https://flagcdn.com/as.svg"),
-        Country(name: "Albania", detail: "Capital: Tirana", population: "2,837,743", area: "28,748 km²", imageName: "albaniaImage", flagURL: "https://flagcdn.com/al.svg"),
-
-    ]
-
-    let urlTest = "https://tusmodelos.com/images/icon-flutter.png"
+    @ObservedObject var countriesDataModel: CountriesDataModel
     
     // Constants for layout
     let gridSpacing:    CGFloat = 20
@@ -49,13 +30,19 @@ struct PopulatedCountriesView: View {
 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
-                            ForEach(countries, id: \.name) { country in
+                            //ForEach(countries, id: \.name) { country in
+                            ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
                                 VStack() {
     //                                countryFlagImage(country.flagURL)
-                                    countryFlagImage(urlTest)
-                                        .frame(height: imageHeight)
-                                        .cornerRadius(10)
-                                        .clipped()
+//                                    countryFlagImage(country.flag)
+//                                        .frame(height: imageHeight)
+//                                        .cornerRadius(10)
+//                                        .clipped()
+                                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                                                                .frame(width: 100, height: 60)
+                                                                .cornerRadius(5)
+                                                                .padding(.leading,30)
+                                                                .padding(.trailing,30)
 
                                     Text(country.name)
                                         .font(.title2)
@@ -65,10 +52,10 @@ struct PopulatedCountriesView: View {
 //                                        .font(.subheadline)
 //                                        .foregroundColor(.secondary)
                                     Text("Population:")
-                                        .font(.footnote)
+                                        .font(.subheadline)
                                         .foregroundColor(.secondary)
-                                    Text(country.population)
-                                        .font(.footnote)
+                                    Text("\(country.population)")
+                                        .font(.subheadline)
                                         .foregroundColor(.secondary)
                                     
 //                                    Text("Area: \(country.area)")
@@ -97,7 +84,7 @@ struct PopulatedCountriesView: View {
         }
         
         
-    // Function to load flag image... in process
+    // Function to load flag image
     @ViewBuilder
     private func countryFlagImage(_ url: String) -> some View {
         AsyncImage(url: URL(string: url)) { image in
@@ -110,5 +97,5 @@ struct PopulatedCountriesView: View {
 }
 
 #Preview {
-    PopulatedCountriesView()
+    PopulatedCountriesView(countriesDataModel: CountriesDataModel())
 }
