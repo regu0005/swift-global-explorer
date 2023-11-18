@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B09428362B0881CD0083339A /* CountryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09428352B0881CD0083339A /* CountryDetail.swift */; };
 		B0C14BCE2B06618E00FAF081 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BCD2B06618E00FAF081 /* SwiftSVG */; };
 		B0C14BD12B06687800FAF081 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BD02B06687800FAF081 /* SVGKit */; };
 		B0C14BD32B06687800FAF081 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BD22B06687800FAF081 /* SVGKitSwift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B09428352B0881CD0083339A /* CountryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetail.swift; sourceTree = "<group>"; };
 		B0C14BD82B066A0000FAF081 /* CountriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDataModel.swift; sourceTree = "<group>"; };
 		B0C14BDA2B0687E600FAF081 /* TestingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingData.swift; sourceTree = "<group>"; };
 		B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedCountriesListView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E98BD12B0595C00067F301 /* Login.swift */,
+				B09428352B0881CD0083339A /* CountryDetail.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B0C14BD92B066A0000FAF081 /* CountriesDataModel.swift in Sources */,
 				B0C14BDB2B0687E600FAF081 /* TestingData.swift in Sources */,
 				B0E98BDC2B05971D0067F301 /* CountriesListView.swift in Sources */,
+				B09428362B0881CD0083339A /* CountryDetail.swift in Sources */,
 				B0E98BD82B0596D00067F301 /* PopulatedCountriesView.swift in Sources */,
 				B0EBFC982B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift in Sources */,
 			);
