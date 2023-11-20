@@ -31,27 +31,42 @@ struct SVGImageView: UIViewRepresentable {
 
 struct ContentView: View {
     @StateObject var countriesDataModel = CountriesDataModel()
+    @StateObject var regionsDataModel = RegionsDataModel()
     
     var body: some View {
-                
+
         NavigationView {
             VStack {
                 ScrollView {
                     HeroSectionView()
-                    ContinentScrollView()
+                    ContinentScrollView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel)
                     PopulatedCountriesView(countriesDataModel: countriesDataModel)
-                    CountriesListView(countriesDataModel: countriesDataModel)
+                    LargestCountriesView(countriesDataModel: countriesDataModel)
                     FlagsCollectionView()
                     Spacer()
                 }
             }
-            .navigationBarTitle("Countries Info", displayMode: .inline)
-            .navigationBarItems(trailing: BottomBarMenu())
-            .onAppear {
-                // Testing data
-                //print(countriesDataModel.countries)
-            }
-        }
+            .edgesIgnoringSafeArea(.all)
+//            .padding(.horizontal, 30)
+            .navigationBarTitle("Countries Home", displayMode: .inline)
+//            .navigationBarItems(trailing: BottomBarMenu())
+            .navigationBarHidden(true)
+//                        .overlay(
+//                            VStack {
+//                                Spacer()
+//                                HStack {
+//                                    Spacer()
+//                                    BottomBarMenu()
+//                                }
+//                                .padding()
+//                            }
+////                            .background(systemMaterialDark)
+//                        )
+                        .onAppear {
+                            // Testing data
+                            //print(countriesDataModel.countries)
+                        }
+            } // End NavigationView
     }
 }
 

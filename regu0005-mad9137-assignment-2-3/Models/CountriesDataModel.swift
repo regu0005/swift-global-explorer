@@ -29,12 +29,13 @@ struct PostCountry: Codable, Identifiable {
     var latitude: String?
     var longitude: String?
     var urlMap: String?
+    var shortDescription: String?
     var idRegion: Int?
     var languages: [Language]
 
     enum CodingKeys: String, CodingKey {
         case id = "id_country"
-        case name, image, flag, capital, population, region, area, latitude, longitude, urlMap = "url_map", idRegion = "id_region", languages
+        case name, image, flag, capital, population, region, area, latitude, longitude, urlMap = "url_map", shortDescription = "short_description", idRegion = "id_region", languages
     }
 }
 
@@ -77,7 +78,7 @@ class CountriesDataModel: ObservableObject {
 
                     DispatchQueue.main.async {
                         self?.countries = decodedArray.sorted { $0.id < $1.id }
-                        print(self?.countries ?? [])
+                        //print(self?.countries ?? [])
                     }
                 } catch {
                     print("Error decoding JSON: \(error.localizedDescription)")
@@ -104,5 +105,10 @@ class CountriesDataModel: ObservableObject {
         return Array(countries
                 .sorted { $0.area > $1.area }
                 .prefix(6))
+    }
+    
+    // Function to get all countries by idRegion
+    func getCountriesByRegion(idRegion: Int) -> [PostCountry] {
+        return countries.filter { $0.idRegion == idRegion }
     }
 }

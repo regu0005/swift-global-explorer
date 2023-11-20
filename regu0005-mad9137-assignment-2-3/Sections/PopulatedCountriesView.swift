@@ -11,17 +11,18 @@ import SVGKit
 
 struct PopulatedCountriesView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @Environment(\.colorScheme) var colorScheme
     
     // Constants for layout
     let gridSpacing:    CGFloat = 20
     let cardWidth:      CGFloat = 170
-    let cardHeight:     CGFloat = 180
+    let cardHeight:     CGFloat = 160
     let imageHeight:    CGFloat = 100
     
     var body: some View {
 
         VStack {
-            Text("Populated Countries")
+                Text("Populated Countries")
                     .font(.title3)
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -30,51 +31,49 @@ struct PopulatedCountriesView: View {
 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
-                            //ForEach(countries, id: \.name) { country in
                             ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
                                 NavigationLink(destination: CountryDetail(country: country)) {
                                     
                                     VStack() {
-        //                                countryFlagImage(country.flagURL)
-    //                                    countryFlagImage(country.flag)
-    //                                        .frame(height: imageHeight)
-    //                                        .cornerRadius(10)
-    //                                        .clipped()
-                                        SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
-                                                                    .frame(width: 100, height: 60)
-                                                                    .cornerRadius(5)
-                                                                    .padding(.leading,30)
-                                                                    .padding(.trailing,30)
+                                        
+                                        // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
+                                        if country.flag.lowercased().hasSuffix(".svg")
+                                        {
+                                            // Display SVG using SVGImageView
+                                            SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                                                .frame(width: 70, height: 50)
+                                                .cornerRadius(5)
+                                                .padding(.leading, 30)
+                                                .padding(.trailing, 30)
+                                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                                        }
+                                        else {
+                                            // Display other image formats using AsyncImage
+                                            AsyncImage(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!) { image in
+                                                image.resizable()
+                                            } placeholder: {
+                                                Color.gray
+                                            }
+                                            .frame(width: 70, height: 50)
+                                            .cornerRadius(5)
+                                            .padding(.leading, 30)
+                                            .padding(.trailing, 30)
+                                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                                        }
+                                        // END VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
 
                                         Text(country.name)
                                             .font(.title2)
                                             .padding(.top, 5)
-
-    //                                    Text(country.detail)
-    //                                        .font(.subheadline)
-    //                                        .foregroundColor(.secondary)
                                         Text("Population:")
                                             .font(.subheadline)
-                                            .foregroundColor(.secondary)
+                                            .foregroundColor(textColor)
                                         Text("\(country.population)")
                                             .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        
-    //                                    Text("Area: \(country.area)")
-    //                                        .font(.footnote)
-    //                                        .foregroundColor(.secondary)
-                                        //HStack {
-        //                                    Text("Population: \(country.population)")
-    //                                        Spacer()
-                                            
-                                        //}
-    //                                    .font(.footnote)
-    //                                    .foregroundColor(.secondary)
+                                            .foregroundColor(textColor)
                                     }
                                     .padding(.top, 5)
-                                    .padding(.bottom, 15)
-    //                                .padding()
-                                    .frame(width: cardWidth, height: cardHeight) // Fixed width for each card
+                                    .frame(width: cardWidth, height: cardHeight) 
                                     .background(Color.white)
                                     .cornerRadius(10)
                                     .shadow(radius: 1)
@@ -82,12 +81,15 @@ struct PopulatedCountriesView: View {
                                 
                             }
                             .padding(.bottom, 5)
-                }
+                } // lazyVGrid
                 .padding(.horizontal)
-            }
-        }
+            } // VStack
+    } // Body view
         
-        
+    var textColor: Color {
+        return colorScheme == .dark ? .gray : .secondary
+    }
+    
     // Function to load flag image
     @ViewBuilder
     private func countryFlagImage(_ url: String) -> some View {

@@ -11,13 +11,18 @@ struct HeroSectionView: View {
     var body: some View {
 //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         VStack(alignment: .leading, spacing: 10) {
-                    Image("heroImage")
+//            Image("home_world_01")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .edgesIgnoringSafeArea(.all)
+                    Image("home_world_03")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(height: 200)
+                        .frame(height: 250)
                         .clipped()
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+//                        .cornerRadius(10)
+//                        .padding(.horizontal)
+//                        .edgesIgnoringSafeArea(.all)
 
                     Text("Explore the World")
                         .font(.largeTitle)
@@ -28,7 +33,7 @@ struct HeroSectionView: View {
                         .font(.body)
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
-                }
+        }
     }
 }
 

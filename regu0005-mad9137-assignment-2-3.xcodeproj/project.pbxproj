@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B049E2012B0A73CB00CB9CEF /* CountriesByRegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B049E2002B0A73CB00CB9CEF /* CountriesByRegionView.swift */; };
 		B09428362B0881CD0083339A /* CountryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09428352B0881CD0083339A /* CountryDetail.swift */; };
+		B0C04CB22B0ADBAE00CB552D /* RegionsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C04CB12B0ADBAE00CB552D /* RegionsDataModel.swift */; };
 		B0C14BCE2B06618E00FAF081 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BCD2B06618E00FAF081 /* SwiftSVG */; };
 		B0C14BD12B06687800FAF081 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BD02B06687800FAF081 /* SVGKit */; };
 		B0C14BD32B06687800FAF081 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BD22B06687800FAF081 /* SVGKitSwift */; };
@@ -19,7 +21,7 @@
 		B0E98BD62B0596BA0067F301 /* ContinentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BD52B0596BA0067F301 /* ContinentScrollView.swift */; };
 		B0E98BD82B0596D00067F301 /* PopulatedCountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BD72B0596D00067F301 /* PopulatedCountriesView.swift */; };
 		B0E98BDA2B0596F20067F301 /* FlagsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BD92B0596F20067F301 /* FlagsCollectionView.swift */; };
-		B0E98BDC2B05971D0067F301 /* CountriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BDB2B05971D0067F301 /* CountriesListView.swift */; };
+		B0E98BDC2B05971D0067F301 /* LargestCountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BDB2B05971D0067F301 /* LargestCountriesView.swift */; };
 		B0E98BDE2B0597320067F301 /* BottomBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BDD2B0597320067F301 /* BottomBarMenu.swift */; };
 		B0E98BE12B059C320067F301 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B0E98BE02B059C320067F301 /* SDWebImageSwiftUI */; };
 		B0EBFC982B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EBFC972B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift */; };
@@ -50,7 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B049E2002B0A73CB00CB9CEF /* CountriesByRegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByRegionView.swift; sourceTree = "<group>"; };
 		B09428352B0881CD0083339A /* CountryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetail.swift; sourceTree = "<group>"; };
+		B0C04CB12B0ADBAE00CB552D /* RegionsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsDataModel.swift; sourceTree = "<group>"; };
 		B0C14BD82B066A0000FAF081 /* CountriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDataModel.swift; sourceTree = "<group>"; };
 		B0C14BDA2B0687E600FAF081 /* TestingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingData.swift; sourceTree = "<group>"; };
 		B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedCountriesListView.swift; sourceTree = "<group>"; };
@@ -59,7 +63,7 @@
 		B0E98BD52B0596BA0067F301 /* ContinentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentScrollView.swift; sourceTree = "<group>"; };
 		B0E98BD72B0596D00067F301 /* PopulatedCountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedCountriesView.swift; sourceTree = "<group>"; };
 		B0E98BD92B0596F20067F301 /* FlagsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsCollectionView.swift; sourceTree = "<group>"; };
-		B0E98BDB2B05971D0067F301 /* CountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListView.swift; sourceTree = "<group>"; };
+		B0E98BDB2B05971D0067F301 /* LargestCountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargestCountriesView.swift; sourceTree = "<group>"; };
 		B0E98BDD2B0597320067F301 /* BottomBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarMenu.swift; sourceTree = "<group>"; };
 		B0EBFC942B05921800B4D8DE /* regu0005-mad9137-assignment-2-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "regu0005-mad9137-assignment-2-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EBFC972B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regu0005_mad9137_assignment_2_3App.swift; sourceTree = "<group>"; };
@@ -103,10 +107,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0C04CB02B0AD53A00CB552D /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */,
+				B0E98BDD2B0597320067F301 /* BottomBarMenu.swift */,
+				B0F234E22B05A6C30055F111 /* CountriesListFetchView.swift */,
+				B0C14BDA2B0687E600FAF081 /* TestingData.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
 		B0C14BD42B0669C300FAF081 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				B0C14BD82B066A0000FAF081 /* CountriesDataModel.swift */,
+				B0C04CB12B0ADBAE00CB552D /* RegionsDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,11 +134,8 @@
 				B0E98BD52B0596BA0067F301 /* ContinentScrollView.swift */,
 				B0E98BD72B0596D00067F301 /* PopulatedCountriesView.swift */,
 				B0E98BD92B0596F20067F301 /* FlagsCollectionView.swift */,
-				B0E98BDB2B05971D0067F301 /* CountriesListView.swift */,
-				B0F234E22B05A6C30055F111 /* CountriesListFetchView.swift */,
-				B0E98BDD2B0597320067F301 /* BottomBarMenu.swift */,
-				B0C14BDA2B0687E600FAF081 /* TestingData.swift */,
-				B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */,
+				B0E98BDB2B05971D0067F301 /* LargestCountriesView.swift */,
+				B049E2002B0A73CB00CB9CEF /* CountriesByRegionView.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -164,6 +177,7 @@
 				B0E98BCF2B05959C0067F301 /* Sections */,
 				B0EBFC972B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift */,
 				B0EBFC992B05921800B4D8DE /* ContentView.swift */,
+				B0C04CB02B0AD53A00CB552D /* Testing */,
 				B0EBFC9B2B05921A00B4D8DE /* Assets.xcassets */,
 				B0EBFC9D2B05921A00B4D8DE /* Preview Content */,
 			);
@@ -340,13 +354,15 @@
 				B0E98BD22B0595C00067F301 /* Login.swift in Sources */,
 				B0F234E32B05A6C30055F111 /* CountriesListFetchView.swift in Sources */,
 				B0E330302B081C7300E8ED51 /* PopulatedCountriesListView.swift in Sources */,
+				B0C04CB22B0ADBAE00CB552D /* RegionsDataModel.swift in Sources */,
 				B0EBFC9A2B05921800B4D8DE /* ContentView.swift in Sources */,
 				B0E98BDE2B0597320067F301 /* BottomBarMenu.swift in Sources */,
 				B0E98BD42B05967D0067F301 /* HeroSectionView.swift in Sources */,
+				B049E2012B0A73CB00CB9CEF /* CountriesByRegionView.swift in Sources */,
 				B0E98BDA2B0596F20067F301 /* FlagsCollectionView.swift in Sources */,
 				B0C14BD92B066A0000FAF081 /* CountriesDataModel.swift in Sources */,
 				B0C14BDB2B0687E600FAF081 /* TestingData.swift in Sources */,
-				B0E98BDC2B05971D0067F301 /* CountriesListView.swift in Sources */,
+				B0E98BDC2B05971D0067F301 /* LargestCountriesView.swift in Sources */,
 				B09428362B0881CD0083339A /* CountryDetail.swift in Sources */,
 				B0E98BD82B0596D00067F301 /* PopulatedCountriesView.swift in Sources */,
 				B0EBFC982B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift in Sources */,
@@ -516,6 +532,8 @@
 				DEVELOPMENT_TEAM = 92MS8TF83L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "World Countries";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -545,6 +563,8 @@
 				DEVELOPMENT_TEAM = 92MS8TF83L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "World Countries";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

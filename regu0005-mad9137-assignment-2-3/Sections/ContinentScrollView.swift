@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ContinentScrollView: View {
-    let continents = ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
+    @ObservedObject var countriesDataModel = CountriesDataModel()
+    @ObservedObject var regionsDataModel = RegionsDataModel()
+    
+//    let continents = ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
 
         var body: some View {
-            Text("Continents")
+            Text("Regions")
                     .font(.title3)
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -19,17 +22,16 @@ struct ContinentScrollView: View {
                     .padding(.top, 5)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(continents, id: \.self) { continent in
-                        Button(action: {
-                            print("Continent selected: \(continent)")
-                        }) {
-                            Text(continent)
-                                .padding()
-                                .frame(width: 100, height: 50)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
+                    ForEach(regionsDataModel.regions) { region in
+                        NavigationLink(destination: CountriesByRegionView(countriesDataModel: countriesDataModel, idRegionRequired: region.id)) {
+                            Text(region.region)
+                                            .padding()
+                                            .frame(width: 100, height: 50)
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(10)
+                                    }
+                        
                     }
                 }
                 .padding(.horizontal)

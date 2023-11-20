@@ -8,21 +8,20 @@ import SwiftUI
 import SVGKit
 
 public struct CountryDetail: View {
-    var country: PostCountry
-    
-    let imageUrl: String = "https://tusmodelos.com/images/img_6.png"
     @State var isFavorite: Bool = false
+    var country: PostCountry
     
 
     public var body: some View {
         
         ScrollView {
-            // Main image
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
-                        AsyncImage(url: URL(string: imageUrl)) { image in
+                AsyncImage(url: URL(string: country.image ?? "")) { image in
                             image.resizable()
                         } placeholder: {
-                            Color.gray
+                            Image("world_default")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
                         }
                         .aspectRatio(contentMode: .fill)
                         .frame(maxWidth: .infinity, maxHeight: 240)
@@ -35,7 +34,7 @@ public struct CountryDetail: View {
                             Image(systemName: isFavorite ? "heart.fill" : "heart")
                                 .foregroundColor(isFavorite ? .red : .gray)
                                 .font(.system(size: 30))
-                                .padding(.top, 60)
+                                .padding(.top, 190)
                                 .padding(.trailing, 10)
                                 .padding(.trailing)
                         }
@@ -50,19 +49,19 @@ public struct CountryDetail: View {
                     .padding(.top, 5)
             HStack {
                 Text("Capital:")
-                        .font(.title2)
+                        .font(.title3)
                         .frame(maxWidth: 100, alignment: .leading)
                         .padding(.top,1)
-                        .padding(.leading,40)
+                        .padding(.leading,30)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
+//                        .background(Color(.yellow))
                 Text("\(country.capital)")
-                        .font(.title2)
+                        .font(.title3)
                         .frame(alignment: .leading)
                         .padding(.horizontal)
                         .padding(.top,1)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
+//                        .background(Color(.yellow))
                 Spacer()
             }
             HStack {
@@ -70,16 +69,16 @@ public struct CountryDetail: View {
                         .font(.title3)
                         .frame(maxWidth: 100, alignment: .leading)
                         .padding(.top,1)
-                        .padding(.leading,40)
+                        .padding(.leading,30)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
+//                        .background(Color(.yellow))
                 Text("\(country.population)")
                         .font(.title3)
                         .frame(alignment: .leading)
                         .padding(.horizontal)
                         .padding(.top,1)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
+//                        .background(Color(.yellow))
                 Spacer()
             }
             HStack {
@@ -87,21 +86,21 @@ public struct CountryDetail: View {
                         .font(.title3)
                         .frame(maxWidth: 100, alignment: .leading)
                         .padding(.top,1)
-                        .padding(.leading,40)
+                        .padding(.leading,30)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
-                Text("\(country.capital) km2")
+//                        .background(Color(.yellow))
+                Text("\(country.area) km2")
                         .font(.title3)
     //                        .bold()
                         .frame(alignment: .leading)
                         .padding(.horizontal)
                         .padding(.top,1)
                         .foregroundColor(.gray)
-                        .background(Color(.yellow))
+//                        .background(Color(.yellow))
                 Spacer()
             }
             HStack{
-                Text("Canada is the second largest country in the world, known for its vast landscapes, multicultural cities, and a strong commitment to human rights and equality.")
+                Text(country.shortDescription ?? " ")
                     .padding(.top,8)
                     .padding(.horizontal)
             }
@@ -136,9 +135,33 @@ public struct CountryDetail: View {
                     .padding(.top,10)
                     .padding(.leading, 22)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                
+                // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
+                if country.flag.lowercased().hasSuffix(".svg")
+                {
+                    // Display SVG using SVGImageView
+                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                        .frame(width: 220, height: 130)
+                        .cornerRadius(10)
+                        .padding(.leading, 30)
+                        .padding(.trailing, 30)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                }
+                else {
+                    // Display other image formats using AsyncImage
+                    AsyncImage(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!) { image in
+                        image.resizable()
+                    } placeholder: {
+                        Color.gray
+                    }
                     .frame(width: 220, height: 130)
                     .cornerRadius(10)
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                }
+                // END VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
+                
             }
             VStack {
                 Text("Map")
@@ -148,7 +171,6 @@ public struct CountryDetail: View {
                     .padding(.leading, 22)
                     .frame(maxWidth: .infinity, alignment: .leading)    
             }
-            // END CODE MADE IN FIGMA
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarTitle("Country Detail", displayMode: .inline)
