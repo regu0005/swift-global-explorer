@@ -10,19 +10,56 @@ import SVGKit
 
 struct CountriesByRegionView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @ObservedObject var regionsDataModel: RegionsDataModel
     @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
     
+//    var region: PostRegion
+    
     var idRegionRequired: Int
+    var numberOfRows: Int = 0
 
-    init(countriesDataModel: CountriesDataModel, idRegionRequired: Int) {
-        self.countriesDataModel = countriesDataModel
-        self.idRegionRequired = idRegionRequired
-    }
+//    init(countriesDataModel: CountriesDataModel, regionsDataModel: RegionsDataModel, idRegionRequired: Int) {
+//        self.countriesDataModel = countriesDataModel
+//        self.regionsDataModel = regionsDataModel
+//        self.idRegionRequired = idRegionRequired
+//    }
     
     var body: some View {
         ScrollView {
-            Text("Countries by Region")
+            ForEach(filteredRegion) { region in
+                ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                    
+                    AsyncImage(url: URL(string: region.image ?? "")) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        Image("world_default")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+//                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
+                    .clipped()
+                    .edgesIgnoringSafeArea(.all)
+                    .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 200)
+                
+                Text(region.region)
+                    .font(.title)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.top, 5)
+                HStack{
+                    Text(region.description )
+                        .padding(.top,8)
+                        .padding(.horizontal)
+                }
+            }
+            
+            Text("Countries of the Region: \(filteredCountries.count)")
                 .font(.title3)
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -41,7 +78,7 @@ struct CountriesByRegionView: View {
                     
                     // Improved with a previous validation
                     ForEach(filteredCountries) { country in
-                        NavigationLink(destination: CountryDetail(country: country)) {
+                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
                             HStack {
 
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
@@ -91,6 +128,7 @@ struct CountriesByRegionView: View {
                     }
                 } // End LazyVStack
         } // End ScrollView
+//        .edgesIgnoringSafeArea(.all)
         
     } // Body view
     
@@ -109,6 +147,10 @@ struct CountriesByRegionView: View {
                 country.name.lowercased().contains(searchText.lowercased())
             }
         }
+    }
+    
+    var filteredRegion: [PostRegion] {
+        regionsDataModel.getRegionById(idRegion: idRegionRequired)
     }
 }
 

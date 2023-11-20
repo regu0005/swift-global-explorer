@@ -10,6 +10,7 @@ import SVGKit
 public struct CountryDetail: View {
     @State var isFavorite: Bool = false
     var country: PostCountry
+    let countriesDataModel: CountriesDataModel
     
 
     public var body: some View {
@@ -24,9 +25,10 @@ public struct CountryDetail: View {
                                     .aspectRatio(contentMode: .fill)
                         }
                         .aspectRatio(contentMode: .fill)
-                        .frame(maxWidth: .infinity, maxHeight: 240)
+                        .frame(maxWidth: .infinity, maxHeight: 260)
                         .clipped()
                         .edgesIgnoringSafeArea(.all)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
 
                         Button(action: {
                             isFavorite.toggle()
@@ -38,8 +40,8 @@ public struct CountryDetail: View {
                                 .padding(.trailing, 10)
                                 .padding(.trailing)
                         }
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: 240)
+            }
+            .frame(maxWidth: .infinity, maxHeight: 260)
             
             Text(country.name)
                     .font(.title)
@@ -114,15 +116,22 @@ public struct CountryDetail: View {
 
                 HStack(alignment: .top, spacing: 20) {
                     ForEach(country.languages, id: \.id) { language in
-                        HStack(spacing: 8) {
-                          Text(language.language)
-                            .font(Font.custom("Inter", size: 16))
-                            .lineSpacing(24)
-                            .foregroundColor(Color(red: 0.10, green: 0.13, blue: 0.17))
+                        
+                        NavigationLink(destination: TopCountriesLanguageView(
+                            topCountries: countriesDataModel.topCountriesSpeakingLanguage(worldwide: language.id), languageName: language.language)) {
+                            
+                            HStack(spacing: 8) {
+                                Text(language.language)
+                                    .font(Font.custom("Inter", size: 16))
+                                    .lineSpacing(24)
+                                    .foregroundColor(Color(red: 0.10, green: 0.13, blue: 0.17))
+                            }
+                            .frame(width: 126, height: 38)
+                            .background(Color(red: 0.89, green: 0.91, blue: 0.94))
+                            .cornerRadius(6)
+                            
                         }
-                        .frame(width: 126, height: 38)
-                        .background(Color(red: 0.89, green: 0.91, blue: 0.94))
-                        .cornerRadius(6)
+                        
                     }
                 }
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -200,6 +209,6 @@ struct CountryDetail_Previews: PreviewProvider {
             idRegion: nil,
             languages: [Language(id: 1, language: "Language demo")]
         )
-        CountryDetail(country: exampleCountry)
+        CountryDetail(country: exampleCountry, countriesDataModel: CountriesDataModel())
     }
 }

@@ -30,20 +30,6 @@ class RegionsDataModel: ObservableObject {
     }
     
     private func fetchRegionsData() {
-//        if let path = Bundle.main.path(forResource: "regions", ofType: "json") {
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path))
-//                let decodedDictionary = try JSONDecoder().decode([String: Region].self, from: data)
-//                let decodedArray = Array(decodedDictionary.values)
-//
-//                DispatchQueue.main.async {
-//                    self.regions = decodedArray.sorted { $0.id < $1.id }
-//                }
-//            } catch {
-//                print("Error decoding JSON: \(error)")
-//            }
-//        }
-        
         
         guard let url = URL(string: "https://countries.tusmodelos.com/regions_data") else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
@@ -62,5 +48,10 @@ class RegionsDataModel: ObservableObject {
             }
         }.resume()
         
+    } // End fetchRegionData
+    
+    // Function to get all countries by idRegion
+    func getRegionById(idRegion: Int) -> [PostRegion] {
+        return regions.filter { $0.id == idRegion }
     }
 }

@@ -1,31 +1,46 @@
 //
-//  CountriesListView.swift
-//  CountryInformation
+//  CountriesGeneralListView.swift
+//  regu0005-mad9137-assignment-2-3
 //
-//  Created by Gustavo Reguerin on 2023-11-15.
+//  Created by Gustavo Reguerin on 2023-11-19.
 //
 
 import SwiftUI
-import SVGKit
 
-
-struct LargestCountriesView: View {
+struct CountriesGeneralListView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
     @Environment(\.colorScheme) var colorScheme
+    @State private var searchText = ""
+    
+
+    init(countriesDataModel: CountriesDataModel) {
+        self.countriesDataModel = countriesDataModel
+    }
     
     var body: some View {
-        VStack{
-            Text("Largest Countries by Area")
+        ScrollView {
+            Text("List of Countries")
                 .font(.title3)
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .padding(.top, 5)
             
+            TextField("Search for a country", text: $searchText)
+                            .padding(7)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
+                            .padding(.horizontal)
+            
                 LazyVStack {
-                    ForEach(countriesDataModel.getMostLargestCountries()) { country in
+                    // Calling with a predefined idRegion
+                    // ForEach(countriesDataModel.getCountriesByRegion(idRegion:idRegionRequired)) { country in
+                    
+                    // Improved with a previous validation
+                    ForEach(filteredCountries) { country in
                         NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
                             HStack {
+
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
                                 if country.flag.lowercased().hasSuffix(".svg")
                                 {
@@ -65,18 +80,15 @@ struct LargestCountriesView: View {
                                     Text("Population: \(country.population)")
                                         .font(.footnote)
                                         .foregroundColor(textColorDetails)
-                                    
                                 }
                                 Spacer()
                             }
                             Divider()
                         }
-                        
                     }
-                }
-        }
-        .padding(.horizontal)
-                 
+                } // End LazyVStack
+        } // End ScrollView
+        
     } // Body view
     
     var textColorDetails: Color {
@@ -85,8 +97,18 @@ struct LargestCountriesView: View {
     var textColorTitle: Color {
         return colorScheme == .dark ? .white : .black
     }
+    
+    var filteredCountries: [PostCountry] {
+        if searchText.isEmpty {
+            return countriesDataModel.countries
+        } else {
+            return countriesDataModel.countries.filter { country in
+                country.name.lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
 }
 
-#Preview {
-    LargestCountriesView(countriesDataModel: CountriesDataModel())
-}
+//#Preview {
+//    CountriesGeneralListView()
+//}

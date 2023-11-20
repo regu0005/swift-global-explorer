@@ -32,7 +32,7 @@ struct PopulatedCountriesView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
                             ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
-                                NavigationLink(destination: CountryDetail(country: country)) {
+                                NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
                                     
                                     VStack() {
                                         
@@ -83,7 +83,8 @@ struct PopulatedCountriesView: View {
                             .padding(.bottom, 5)
                 } // lazyVGrid
                 .padding(.horizontal)
-            } // VStack
+        } // VStack
+        .padding(.horizontal)
     } // Body view
         
     var textColor: Color {

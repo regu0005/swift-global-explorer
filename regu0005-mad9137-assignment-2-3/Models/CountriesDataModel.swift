@@ -111,4 +111,20 @@ class CountriesDataModel: ObservableObject {
     func getCountriesByRegion(idRegion: Int) -> [PostCountry] {
         return countries.filter { $0.idRegion == idRegion }
     }
+    
+    func topCountriesSpeakingLanguage(worldwide languageId: Int) -> [PostCountry] {
+            return countries
+                .filter { $0.languages.contains(where: { $0.id == languageId }) }
+                .sorted { $0.population > $1.population }
+                .prefix(10)
+                .map { $0 }
+    }
+
+    func topCountriesSpeakingLanguage(inRegion idRegion: Int, languageId: Int) -> [PostCountry] {
+        return countries
+            .filter { $0.idRegion == idRegion && $0.languages.contains(where: { $0.id == languageId }) }
+            .sorted { $0.name < $1.name }
+            .prefix(10)
+            .map { $0 }
+    }
 }

@@ -38,7 +38,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    HeroSectionView()
+                    HeroSectionView(countriesDataModel: countriesDataModel)
                     ContinentScrollView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel)
                     PopulatedCountriesView(countriesDataModel: countriesDataModel)
                     LargestCountriesView(countriesDataModel: countriesDataModel)
