@@ -33,7 +33,7 @@ struct PopulatedCountriesView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
                             ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
-                                NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
+                                NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
                                     
                                     VStack() {
                                         

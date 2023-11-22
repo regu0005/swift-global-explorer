@@ -21,7 +21,10 @@ extension PostCountry {
 }
 
 struct TopCountriesLanguageView: View {
+    @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     var topCountries: [PostCountry]
+    @ObservedObject var countriesDataModel: CountriesDataModel
+    
     var languageName: String
     
         var body: some View {
@@ -36,7 +39,6 @@ struct TopCountriesLanguageView: View {
                         .font(.subheadline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
-//                        .padding(.top, 1)
                     
                     Chart(topCountries, id: \.id) { country in
                         // Scale down because the chart doesn't work with huge numbers
@@ -56,19 +58,22 @@ struct TopCountriesLanguageView: View {
                     .padding(.bottom,10)
                     
                     List(topCountries, id: \.id) { country in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Label("", systemImage: "square.fill")
-                                    .foregroundStyle(country.color)
-                                Text(country.name)
-                                    .font(.headline)
-                                Spacer()
+                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Label("", systemImage: "square.fill")
+                                        .foregroundStyle(country.color)
+                                    Text(country.name)
+                                        .font(.headline)
+                                    Spacer()
+                                }
+                                
+                                Text("Population: \(country.population)")
+                                    .font(.subheadline)
+                                    .padding(.leading,50)
                             }
-                            
-                            Text("Population: \(country.population)")
-                                .font(.subheadline)
-                                .padding(.leading,50)
                         }
+                        
                     }
                     .padding(.top,-20)
                 }
@@ -88,6 +93,6 @@ struct TopCountriesLanguageView_Previews: PreviewProvider {
             PostCountry(id: 1, name: "Country C", image: "", flag: "🇦🇽", capital: "Capital C", population: 500, region: "", area: 10, languages: [Language(idLanguage: 2, language: "English")]),
         ]
 
-        TopCountriesLanguageView(topCountries: dummyCountries, languageName: "English")
+        TopCountriesLanguageView(favoritesManagerModel: FavoritesManagerModel(), topCountries: dummyCountries, countriesDataModel: CountriesDataModel() ,languageName: "English")
     }
 }

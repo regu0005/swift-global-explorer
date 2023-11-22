@@ -14,7 +14,7 @@ struct FavoritesView: View {
 
         var body: some View {
             List(favoriteCountries) { country in
-                NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
+                NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
                     
                     HStack {
 

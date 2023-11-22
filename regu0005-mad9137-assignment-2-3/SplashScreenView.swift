@@ -27,6 +27,12 @@ struct SplashScreenView: View {
                     Text("World Countries")
                         .font(Font.title)
                         .bold()
+                    Text("Gustavo Reguerin")
+                        .font(.body)
+                        .padding(.top, 40)
+                    Text("MADD 2023")
+                        .font(.footnote)
+                        .padding(.top, 30)
                 }
                 .scaleEffect(size)
                 .opacity(opacity)

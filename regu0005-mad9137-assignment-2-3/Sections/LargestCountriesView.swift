@@ -24,7 +24,7 @@ struct LargestCountriesView: View {
             
                 LazyVStack {
                     ForEach(countriesDataModel.getMostLargestCountries()) { country in
-                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
+                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
                             HStack {
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
                                 if country.flag.lowercased().hasSuffix(".svg")
