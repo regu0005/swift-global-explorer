@@ -8,9 +8,9 @@
 import SwiftUI
 import SVGKit
 
-
 struct LargestCountriesView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -24,7 +24,7 @@ struct LargestCountriesView: View {
             
                 LazyVStack {
                     ForEach(countriesDataModel.getMostLargestCountries()) { country in
-                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
+                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
                             HStack {
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
                                 if country.flag.lowercased().hasSuffix(".svg")
@@ -65,18 +65,15 @@ struct LargestCountriesView: View {
                                     Text("Population: \(country.population)")
                                         .font(.footnote)
                                         .foregroundColor(textColorDetails)
-                                    
                                 }
                                 Spacer()
                             }
                             Divider()
                         }
-                        
                     }
                 }
         }
         .padding(.horizontal)
-                 
     } // Body view
     
     var textColorDetails: Color {
@@ -88,5 +85,5 @@ struct LargestCountriesView: View {
 }
 
 #Preview {
-    LargestCountriesView(countriesDataModel: CountriesDataModel())
+    LargestCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel())
 }

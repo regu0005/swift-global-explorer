@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HeroSectionView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     
     var body: some View {
-//        VStack(spacing: 0) {
             ZStack(alignment: .topTrailing) {
                 Image("home_world_03")
                     .resizable()
@@ -19,13 +19,21 @@ struct HeroSectionView: View {
                     .frame(height: 250)
                     .clipped()
                 
-                NavigationLink(destination: CountriesGeneralListView(countriesDataModel: countriesDataModel)) {
-                    Image(systemName: "magnifyingglass")
+                NavigationLink(destination: FavoritesView(favoritesManagerModel: favoritesManagerModel, countriesDataModel: countriesDataModel)) {
+                    Image(systemName: "heart")
                         .font(.system(size: 30))
-                        .padding(16)
+                        .padding(.horizontal, 70)
                         .foregroundColor(.white)
                 }
-                .padding(.top, 44)
+                .padding(.top, 54)
+                .padding(.horizontal,20)
+                NavigationLink(destination: CountriesGeneralListView(countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 30))
+                        .padding(.trailing, 20)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 54)
                 .padding(.horizontal,20)
             }
             
@@ -41,45 +49,9 @@ struct HeroSectionView: View {
                     .foregroundColor(.secondary)
                     .padding(.horizontal)
             }
-//        }
     }
-//        VStack(alignment: .leading, spacing: 10) {
-////            Image("home_world_01")
-////                    .resizable()
-////                    .aspectRatio(contentMode: .fill)
-////                    .edgesIgnoringSafeArea(.all)
-//                    Image("home_world_03")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
-//                        .frame(height: 250)
-//                        .clipped()
-////                        .cornerRadius(10)
-////                        .padding(.horizontal)
-////                        .edgesIgnoringSafeArea(.all)
-//
-//                    Button(action: {
-//                        
-//                    }) {
-//                        Image(systemName: "search")
-//                            .font(.system(size: 30))
-//                            .padding(.top, 190)
-//                            .padding(.trailing, 10)
-//                            .padding(.trailing)
-//                    }
-//            
-//                    Text("Explore the World")
-//                        .font(.largeTitle)
-//                        .fontWeight(.bold)
-//                        .padding(.horizontal)
-//
-//                    Text("Discover information about countries, continents, and more.")
-//                        .font(.body)
-//                        .foregroundColor(.secondary)
-//                        .padding(.horizontal)
-//        }
-//    }
 }
 
 #Preview {
-    HeroSectionView(countriesDataModel: CountriesDataModel())
+    HeroSectionView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel())
 }

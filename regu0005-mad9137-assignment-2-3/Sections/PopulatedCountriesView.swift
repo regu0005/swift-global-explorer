@@ -11,6 +11,7 @@ import SVGKit
 
 struct PopulatedCountriesView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     @Environment(\.colorScheme) var colorScheme
     
     // Constants for layout
@@ -32,7 +33,7 @@ struct PopulatedCountriesView: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
                             ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
-                                NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
+                                NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
                                     
                                     VStack() {
                                         
@@ -104,5 +105,5 @@ struct PopulatedCountriesView: View {
 }
 
 #Preview {
-    PopulatedCountriesView(countriesDataModel: CountriesDataModel())
+    PopulatedCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel())
 }

@@ -9,11 +9,11 @@ import SwiftUI
 import Combine
 
 struct Language: Codable {
-    var id: Int
+    var idLanguage: Int
     var language: String
 
     enum CodingKeys: String, CodingKey {
-        case id = "id_language", language
+        case idLanguage = "id_language", language
     }
 }
 
@@ -42,6 +42,7 @@ struct PostCountry: Codable, Identifiable {
 
 class CountriesDataModel: ObservableObject {
     @Published var countries: [PostCountry] = []
+    @Published var isLoading = true
     
     init() {
         fetchCountriesData()
@@ -78,6 +79,7 @@ class CountriesDataModel: ObservableObject {
 
                     DispatchQueue.main.async {
                         self?.countries = decodedArray.sorted { $0.id < $1.id }
+                        self?.isLoading = false
                         //print(self?.countries ?? [])
                     }
                 } catch {
@@ -114,7 +116,7 @@ class CountriesDataModel: ObservableObject {
     
     func topCountriesSpeakingLanguage(worldwide languageId: Int) -> [PostCountry] {
             return countries
-                .filter { $0.languages.contains(where: { $0.id == languageId }) }
+                .filter { $0.languages.contains(where: { $0.idLanguage == languageId }) }
                 .sorted { $0.population > $1.population }
                 .prefix(10)
                 .map { $0 }
@@ -122,7 +124,7 @@ class CountriesDataModel: ObservableObject {
 
     func topCountriesSpeakingLanguage(inRegion idRegion: Int, languageId: Int) -> [PostCountry] {
         return countries
-            .filter { $0.idRegion == idRegion && $0.languages.contains(where: { $0.id == languageId }) }
+            .filter { $0.idRegion == idRegion && $0.languages.contains(where: { $0.idLanguage == languageId }) }
             .sorted { $0.name < $1.name }
             .prefix(10)
             .map { $0 }

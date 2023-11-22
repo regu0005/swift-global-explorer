@@ -32,41 +32,33 @@ struct SVGImageView: UIViewRepresentable {
 struct ContentView: View {
     @StateObject var countriesDataModel = CountriesDataModel()
     @StateObject var regionsDataModel = RegionsDataModel()
+    @StateObject var favoritesManagerModel = FavoritesManagerModel()
     
     var body: some View {
 
         NavigationView {
-            VStack {
-                ScrollView {
-                    HeroSectionView(countriesDataModel: countriesDataModel)
-                    ContinentScrollView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel)
-                    PopulatedCountriesView(countriesDataModel: countriesDataModel)
-                    LargestCountriesView(countriesDataModel: countriesDataModel)
-                    FlagsCollectionView()
-                    Spacer()
-                }
+            if(countriesDataModel.isLoading) {
+                ProgressView("Loading...")
+                    .font(.headline)
+                    .bold()
             }
-            .edgesIgnoringSafeArea(.all)
-//            .padding(.horizontal, 30)
-            .navigationBarTitle("Countries Home", displayMode: .inline)
-//            .navigationBarItems(trailing: BottomBarMenu())
-            .navigationBarHidden(true)
-//                        .overlay(
-//                            VStack {
-//                                Spacer()
-//                                HStack {
-//                                    Spacer()
-//                                    BottomBarMenu()
-//                                }
-//                                .padding()
-//                            }
-////                            .background(systemMaterialDark)
-//                        )
-                        .onAppear {
-                            // Testing data
-                            //print(countriesDataModel.countries)
-                        }
-            } // End NavigationView
+            else {
+                VStack {
+                    ScrollView {
+                        HeroSectionView(countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)
+                        ContinentScrollView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel, favoritesManagerModel: favoritesManagerModel)
+                        PopulatedCountriesView(countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)
+                        LargestCountriesView(countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)
+                        // FlagsCollectionView()
+                        Spacer()
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitle("Countries Home", displayMode: .inline)
+                .navigationBarHidden(true)
+            }
+            
+        } // End NavigationView
     }
 }
 

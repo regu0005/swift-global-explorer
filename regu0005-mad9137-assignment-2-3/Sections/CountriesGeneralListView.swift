@@ -9,13 +9,10 @@ import SwiftUI
 
 struct CountriesGeneralListView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
+    @ObservedObject var favoritesManagerModel: FavoritesManagerModel
+    
     @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
-    
-
-    init(countriesDataModel: CountriesDataModel) {
-        self.countriesDataModel = countriesDataModel
-    }
     
     var body: some View {
         ScrollView {
@@ -33,12 +30,8 @@ struct CountriesGeneralListView: View {
                             .padding(.horizontal)
             
                 LazyVStack {
-                    // Calling with a predefined idRegion
-                    // ForEach(countriesDataModel.getCountriesByRegion(idRegion:idRegionRequired)) { country in
-                    
-                    // Improved with a previous validation
                     ForEach(filteredCountries) { country in
-                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: CountriesDataModel())) {
+                        NavigationLink(destination: CountryDetail(country: country, countriesDataModel: countriesDataModel, favoritesManagerModel: favoritesManagerModel)) {
                             HStack {
 
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)

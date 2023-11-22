@@ -11,7 +11,8 @@ import SwiftUI
 struct regu0005_mad9137_assignment_2_3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            SplashScreenView()
         }
     }
 }
