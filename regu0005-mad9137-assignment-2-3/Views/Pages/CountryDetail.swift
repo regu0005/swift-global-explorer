@@ -39,7 +39,8 @@ public struct CountryDetail: View {
     
     var country: PostCountry
     let countriesDataModel: CountriesDataModel
-//    let favoritesManagerModel: FavoritesManagerModel
+    
+    var networkMonitor: NetworkMonitor
     
 
     public var body: some View {
@@ -80,7 +81,6 @@ public struct CountryDetail: View {
                             
                             
                         @unknown default:
-                            //<#fatalError()#>
                             Image("world_default")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -155,6 +155,21 @@ public struct CountryDetail: View {
                             .foregroundColor(.gray)
                     Spacer()
                 }
+                HStack {
+                    Text("Region:")
+                            .font(Font.system(size: 18))
+                            .frame(maxWidth: 100, alignment: .leading)
+                            .padding(.top,1)
+                            .padding(.leading,30)
+                            .foregroundColor(.gray)
+                    Text("\(country.region)")
+                            .font(Font.system(size: 18))
+                            .frame(alignment: .leading)
+                            .padding(.horizontal)
+                            .padding(.top,1)
+                            .foregroundColor(.gray)
+                    Spacer()
+                }
                 HStack{
                     Text(country.shortDescription ?? " ")
                         .padding(.top,8)
@@ -172,7 +187,7 @@ public struct CountryDetail: View {
                         ForEach(country.languages, id: \.idLanguage) { language in
                             
                             NavigationLink(destination: TopCountriesLanguageView(favoritesManagerModel: favoritesManagerModel,
-                                                                                 topCountries: countriesDataModel.topCountriesSpeakingLanguage(worldwide: language.idLanguage), countriesDataModel: countriesDataModel, languageName: language.language)) {
+                                                                                 topCountries: countriesDataModel.topCountriesSpeakingLanguage(worldwide: language.idLanguage), countriesDataModel: countriesDataModel, languageName: language.language, networkMonitor: networkMonitor)) {
                                 
                                 HStack(spacing: 8) {
                                     Text(language.language)
@@ -203,7 +218,7 @@ public struct CountryDetail: View {
                     if country.flag.lowercased().hasSuffix(".svg")
                     {
                         // Display SVG using SVGImageView
-                        SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                        SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!, networkMonitor: networkMonitor)
                             .frame(width: 220, height: 130)
                             .cornerRadius(10)
                             .padding(.leading, 30)

@@ -14,6 +14,8 @@ struct PopulatedCountriesView: View {
     @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     @Environment(\.colorScheme) var colorScheme
     
+    var networkMonitor: NetworkMonitor
+    
     // Constants for layout
     let gridSpacing:    CGFloat = 20
     let cardWidth:      CGFloat = 170
@@ -23,17 +25,24 @@ struct PopulatedCountriesView: View {
     var body: some View {
 
         VStack {
-                Text("Populated Countries")
-                    .font(.title3)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.top, 5)
-
+                HStack {
+                    Text("Populated Countries")
+                        .font(.title3)
+                        .bold()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        
+                    Spacer()
+                    NavigationLink(destination: TopCountriesPopulatedView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostPopulatedCountries(), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
+                        Text("See more")
+                            .padding(.horizontal,20)
+                    }
+                }.padding(.top, 15)
+            
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
                             ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
-                                NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
+                                NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                                     
                                     VStack() {
                                         
@@ -41,7 +50,7 @@ struct PopulatedCountriesView: View {
                                         if country.flag.lowercased().hasSuffix(".svg")
                                         {
                                             // Display SVG using SVGImageView
-                                            SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                                            SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!, networkMonitor: networkMonitor)
                                                 .frame(width: 70, height: 50)
                                                 .cornerRadius(5)
                                                 .padding(.leading, 30)
@@ -105,5 +114,5 @@ struct PopulatedCountriesView: View {
 }
 
 #Preview {
-    PopulatedCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel())
+    PopulatedCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel(), networkMonitor: NetworkMonitor())
 }

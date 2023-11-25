@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct regu0005_mad9137_assignment_2_3App: App {
+    var networkMonitor = NetworkMonitor()
+    
     var body: some Scene {
         WindowGroup {
             //ContentView()
             SplashScreenView()
+                .environmentObject(networkMonitor)
         }
     }
 }

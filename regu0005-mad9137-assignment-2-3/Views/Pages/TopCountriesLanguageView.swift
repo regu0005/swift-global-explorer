@@ -26,6 +26,7 @@ struct TopCountriesLanguageView: View {
     @ObservedObject var countriesDataModel: CountriesDataModel
     
     var languageName: String
+    var networkMonitor: NetworkMonitor
     
         var body: some View {
                 VStack {
@@ -58,7 +59,7 @@ struct TopCountriesLanguageView: View {
                     .padding(.bottom,10)
                     
                     List(topCountries, id: \.id) { country in
-                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
+                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Label("", systemImage: "square.fill")
@@ -93,6 +94,6 @@ struct TopCountriesLanguageView_Previews: PreviewProvider {
             PostCountry(id: 1, name: "Country C", image: "", flag: "🇦🇽", capital: "Capital C", population: 500, region: "", area: 10, languages: [Language(idLanguage: 2, language: "English")]),
         ]
 
-        TopCountriesLanguageView(favoritesManagerModel: FavoritesManagerModel(), topCountries: dummyCountries, countriesDataModel: CountriesDataModel() ,languageName: "English")
+        TopCountriesLanguageView(favoritesManagerModel: FavoritesManagerModel(), topCountries: dummyCountries, countriesDataModel: CountriesDataModel() ,languageName: "English", networkMonitor: NetworkMonitor())
     }
 }

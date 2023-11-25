@@ -13,24 +13,33 @@ struct LargestCountriesView: View {
     @ObservedObject var favoritesManagerModel: FavoritesManagerModel
     @Environment(\.colorScheme) var colorScheme
     
+    var networkMonitor: NetworkMonitor
+    
     var body: some View {
         VStack{
-            Text("Largest Countries by Area")
-                .font(.title3)
-                .bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .padding(.top, 5)
+            HStack {
+                Text("Largest Countries by Area")
+                    .font(.title3)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    
+                Spacer()
+                NavigationLink(destination: TopCountriesLargestAreaView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostLargestCountries(), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
+                    Text("See more")
+                        .padding(.horizontal,20)
+                }
+            }.padding(.top, 15)
             
                 LazyVStack {
                     ForEach(countriesDataModel.getMostLargestCountries()) { country in
-                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
+                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                             HStack {
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
                                 if country.flag.lowercased().hasSuffix(".svg")
                                 {
                                     // Display SVG using SVGImageView
-                                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!, networkMonitor: networkMonitor)
                                         .frame(width: 50, height: 30)
                                         .cornerRadius(5)
                                         .padding(.leading, 30)
@@ -85,5 +94,5 @@ struct LargestCountriesView: View {
 }
 
 #Preview {
-    LargestCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel())
+    LargestCountriesView(countriesDataModel: CountriesDataModel(), favoritesManagerModel: FavoritesManagerModel(), networkMonitor: NetworkMonitor())
 }

@@ -21,6 +21,11 @@
 		B0C14BD32B06687800FAF081 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B0C14BD22B06687800FAF081 /* SVGKitSwift */; };
 		B0C14BD92B066A0000FAF081 /* CountriesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C14BD82B066A0000FAF081 /* CountriesDataModel.swift */; };
 		B0C14BDB2B0687E600FAF081 /* TestingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C14BDA2B0687E600FAF081 /* TestingData.swift */; };
+		B0D6065D2B117F6F00C44FA3 /* NetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6065C2B117F6F00C44FA3 /* NetUI.swift */; };
+		B0D6065F2B117FAA00C44FA3 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6065E2B117FAA00C44FA3 /* NetworkMonitor.swift */; };
+		B0D606632B11852100C44FA3 /* SharingExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D606622B11852100C44FA3 /* SharingExamples.swift */; };
+		B0D606652B11AADD00C44FA3 /* TopCountriesPopulatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D606642B11AADD00C44FA3 /* TopCountriesPopulatedView.swift */; };
+		B0D606672B11B0C600C44FA3 /* TopCountriesLargestAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D606662B11B0C600C44FA3 /* TopCountriesLargestAreaView.swift */; };
 		B0E330302B081C7300E8ED51 /* PopulatedCountriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */; };
 		B0E98BD22B0595C00067F301 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BD12B0595C00067F301 /* Login.swift */; };
 		B0E98BD42B05967D0067F301 /* HeroSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E98BD32B05967D0067F301 /* HeroSectionView.swift */; };
@@ -69,6 +74,11 @@
 		B0C04CBA2B0B24A100CB552D /* TopCountriesLanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCountriesLanguageView.swift; sourceTree = "<group>"; };
 		B0C14BD82B066A0000FAF081 /* CountriesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDataModel.swift; sourceTree = "<group>"; };
 		B0C14BDA2B0687E600FAF081 /* TestingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingData.swift; sourceTree = "<group>"; };
+		B0D6065C2B117F6F00C44FA3 /* NetUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetUI.swift; sourceTree = "<group>"; };
+		B0D6065E2B117FAA00C44FA3 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		B0D606622B11852100C44FA3 /* SharingExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingExamples.swift; sourceTree = "<group>"; };
+		B0D606642B11AADD00C44FA3 /* TopCountriesPopulatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCountriesPopulatedView.swift; sourceTree = "<group>"; };
+		B0D606662B11B0C600C44FA3 /* TopCountriesLargestAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCountriesLargestAreaView.swift; sourceTree = "<group>"; };
 		B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedCountriesListView.swift; sourceTree = "<group>"; };
 		B0E98BD12B0595C00067F301 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		B0E98BD32B05967D0067F301 /* HeroSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSectionView.swift; sourceTree = "<group>"; };
@@ -122,10 +132,13 @@
 		B0C04CB02B0AD53A00CB552D /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				B0C04CB72B0B223F00CB552D /* Charts */,
+				B0E98BD12B0595C00067F301 /* Login.swift */,
 				B0E3302F2B081C7300E8ED51 /* PopulatedCountriesListView.swift */,
 				B0E98BDD2B0597320067F301 /* BottomBarMenu.swift */,
 				B0F234E22B05A6C30055F111 /* CountriesListFetchView.swift */,
 				B0C14BDA2B0687E600FAF081 /* TestingData.swift */,
+				B0D606622B11852100C44FA3 /* SharingExamples.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -148,7 +161,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B0E98BCF2B05959C0067F301 /* Sections */ = {
+		B0D606602B11837200C44FA3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0D6065E2B117FAA00C44FA3 /* NetworkMonitor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B0D606612B11842000C44FA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B0E98BD02B0595A60067F301 /* Pages */,
+				B0E98BCF2B05959C0067F301 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B0E98BCF2B05959C0067F301 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				B0E98BD32B05967D0067F301 /* HeroSectionView.swift */,
@@ -159,15 +189,16 @@
 				B049E2002B0A73CB00CB9CEF /* CountriesByRegionView.swift */,
 				B0C04CB32B0B022200CB552D /* CountriesGeneralListView.swift */,
 			);
-			path = Sections;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		B0E98BD02B0595A60067F301 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				B0E98BD12B0595C00067F301 /* Login.swift */,
 				B09428352B0881CD0083339A /* CountryDetail.swift */,
 				B0C04CBA2B0B24A100CB552D /* TopCountriesLanguageView.swift */,
+				B0D606642B11AADD00C44FA3 /* TopCountriesPopulatedView.swift */,
+				B0D606662B11B0C600C44FA3 /* TopCountriesLargestAreaView.swift */,
 				B09D11C02B0D821100087981 /* FavoritesView.swift */,
 			);
 			path = Pages;
@@ -197,15 +228,15 @@
 			isa = PBXGroup;
 			children = (
 				B0C14BD42B0669C300FAF081 /* Models */,
-				B0E98BD02B0595A60067F301 /* Pages */,
-				B0E98BCF2B05959C0067F301 /* Sections */,
 				B0EBFC972B05921800B4D8DE /* regu0005_mad9137_assignment_2_3App.swift */,
+				B0D606612B11842000C44FA3 /* Views */,
+				B0D606602B11837200C44FA3 /* Services */,
 				B0EBFC992B05921800B4D8DE /* ContentView.swift */,
-				B0C04CB72B0B223F00CB552D /* Charts */,
 				B0C04CB02B0AD53A00CB552D /* Testing */,
 				B0EBFC9B2B05921A00B4D8DE /* Assets.xcassets */,
 				B0EBFC9D2B05921A00B4D8DE /* Preview Content */,
 				B09D11BC2B0D516A00087981 /* SplashScreenView.swift */,
+				B0D6065C2B117F6F00C44FA3 /* NetUI.swift */,
 			);
 			path = "regu0005-mad9137-assignment-2-3";
 			sourceTree = "<group>";
@@ -377,19 +408,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09D11C12B0D821100087981 /* FavoritesView.swift in Sources */,
+				B0D6065F2B117FAA00C44FA3 /* NetworkMonitor.swift in Sources */,
+				B0D606672B11B0C600C44FA3 /* TopCountriesLargestAreaView.swift in Sources */,
 				B0E98BD62B0596BA0067F301 /* ContinentScrollView.swift in Sources */,
+				B0D606632B11852100C44FA3 /* SharingExamples.swift in Sources */,
 				B0E98BD22B0595C00067F301 /* Login.swift in Sources */,
 				B0C04CB92B0B225200CB552D /* DonutChartView.swift in Sources */,
 				B0F234E32B05A6C30055F111 /* CountriesListFetchView.swift in Sources */,
 				B0E330302B081C7300E8ED51 /* PopulatedCountriesListView.swift in Sources */,
 				B0C04CB22B0ADBAE00CB552D /* RegionsDataModel.swift in Sources */,
 				B0EBFC9A2B05921800B4D8DE /* ContentView.swift in Sources */,
+				B0D606652B11AADD00C44FA3 /* TopCountriesPopulatedView.swift in Sources */,
 				B09D11BD2B0D516A00087981 /* SplashScreenView.swift in Sources */,
 				B0E98BDE2B0597320067F301 /* BottomBarMenu.swift in Sources */,
 				B0E98BD42B05967D0067F301 /* HeroSectionView.swift in Sources */,
 				B049E2012B0A73CB00CB9CEF /* CountriesByRegionView.swift in Sources */,
 				B0C04CB42B0B022200CB552D /* CountriesGeneralListView.swift in Sources */,
 				B0C04CBB2B0B24A100CB552D /* TopCountriesLanguageView.swift in Sources */,
+				B0D6065D2B117F6F00C44FA3 /* NetUI.swift in Sources */,
 				B0E98BDA2B0596F20067F301 /* FlagsCollectionView.swift in Sources */,
 				B0C14BD92B066A0000FAF081 /* CountriesDataModel.swift in Sources */,
 				B0C14BDB2B0687E600FAF081 /* TestingData.swift in Sources */,

@@ -11,6 +11,8 @@ struct ContinentScrollView: View {
     @ObservedObject var countriesDataModel = CountriesDataModel()
     @ObservedObject var regionsDataModel = RegionsDataModel()
     @ObservedObject var favoritesManagerModel: FavoritesManagerModel
+    
+    var networkMonitor: NetworkMonitor
 
         var body: some View {
             VStack{
@@ -23,7 +25,7 @@ struct ContinentScrollView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(regionsDataModel.regions) { region in
-                            NavigationLink(destination: CountriesByRegionView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel, favoritesManagerModel: favoritesManagerModel, idRegionRequired: region.id)) {
+                            NavigationLink(destination: CountriesByRegionView(countriesDataModel: countriesDataModel, regionsDataModel: regionsDataModel, favoritesManagerModel: favoritesManagerModel, networkMonitor: networkMonitor, idRegionRequired: region.id)) {
                                     Text(region.region)
                                         .padding()
                                         .frame(width: 140, height: 60)
@@ -42,5 +44,5 @@ struct ContinentScrollView: View {
 }
 
 #Preview {
-    ContinentScrollView(favoritesManagerModel: FavoritesManagerModel())
+    ContinentScrollView(favoritesManagerModel: FavoritesManagerModel(), networkMonitor: NetworkMonitor())
 }

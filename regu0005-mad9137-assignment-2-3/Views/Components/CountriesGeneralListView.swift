@@ -14,6 +14,8 @@ struct CountriesGeneralListView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var searchText = ""
     
+    var networkMonitor: NetworkMonitor
+    
     var body: some View {
         ScrollView {
             Text("List of Countries")
@@ -31,14 +33,14 @@ struct CountriesGeneralListView: View {
             
                 LazyVStack {
                     ForEach(filteredCountries) { country in
-                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel)) {
+                        NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                             HStack {
 
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)
                                 if country.flag.lowercased().hasSuffix(".svg")
                                 {
                                     // Display SVG using SVGImageView
-                                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!)
+                                    SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://tusmodelos.com/images/placeholder.jpg")!, networkMonitor: networkMonitor)
                                         .frame(width: 50, height: 30)
                                         .cornerRadius(5)
                                         .padding(.leading, 30)

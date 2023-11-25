@@ -12,7 +12,8 @@ import SVGKit
 struct CountriesListFetchView: View {
     
     @State var postCountries: [PostCountry] = []
-            
+    var networkMonitor: NetworkMonitor
+    
             var body: some View {
                 
                 Text("Largest Countries by Area")
@@ -26,7 +27,7 @@ struct CountriesListFetchView: View {
                         ForEach(postCountries) { country in
                             HStack {
                                 
-                                SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://example.com/placeholder.svg")!)
+                                SVGImageView(url: URL(string: country.flag) ?? URL(string: "https://example.com/placeholder.svg")!, networkMonitor: networkMonitor)
                                                             .frame(width: 50, height: 30)
                                                             .cornerRadius(5)
                                                             .padding(.leading,30)
@@ -108,5 +109,5 @@ struct CountriesListFetchView: View {
 }
 
 #Preview {
-    CountriesListFetchView()
+    CountriesListFetchView(networkMonitor: NetworkMonitor())
 }
