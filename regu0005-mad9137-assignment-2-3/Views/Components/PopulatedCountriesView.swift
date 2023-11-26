@@ -33,7 +33,7 @@ struct PopulatedCountriesView: View {
                         .padding(.horizontal)
                         
                     Spacer()
-                    NavigationLink(destination: TopCountriesPopulatedView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostPopulatedCountries(), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
+                    NavigationLink(destination: TopCountriesPopulatedView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostPopulatedCountries(quantity: 10), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                         Text("See more")
                             .padding(.horizontal,20)
                     }
@@ -41,7 +41,7 @@ struct PopulatedCountriesView: View {
             
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 
-                            ForEach(countriesDataModel.getMostPopulatedCountries(), id: \.id) { country in
+                            ForEach(countriesDataModel.getMostPopulatedCountries(quantity: 6), id: \.id) { country in
                                 NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                                     
                                     VStack() {

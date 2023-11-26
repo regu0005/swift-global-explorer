@@ -42,6 +42,7 @@ struct HeroSectionView: View {
                     .clipped()
                 
                 ShareLink(
+                    Text("Share"),
                     item: photo,
                     subject: Text(photo.subject),
                     message: Text(photo.description),

@@ -25,14 +25,14 @@ struct LargestCountriesView: View {
                     .padding(.horizontal)
                     
                 Spacer()
-                NavigationLink(destination: TopCountriesLargestAreaView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostLargestCountries(), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
+                NavigationLink(destination: TopCountriesLargestAreaView(favoritesManagerModel: favoritesManagerModel, topCountries: countriesDataModel.getMostLargestCountries(quantity: 10), countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                     Text("See more")
                         .padding(.horizontal,20)
                 }
             }.padding(.top, 15)
             
                 LazyVStack {
-                    ForEach(countriesDataModel.getMostLargestCountries()) { country in
+                    ForEach(countriesDataModel.getMostLargestCountries(quantity: 6)) { country in
                         NavigationLink(destination: CountryDetail(favoritesManagerModel: favoritesManagerModel, country: country, countriesDataModel: countriesDataModel, networkMonitor: networkMonitor)) {
                             HStack {
                                 // VALIDATION FLAG: SVG OR (PNG, JPEG, JPEG)

@@ -97,16 +97,16 @@ class CountriesDataModel: ObservableObject {
     }
     
     
-    func getMostPopulatedCountries() -> [PostCountry] {
+    func getMostPopulatedCountries(quantity: Int) -> [PostCountry] {
         return Array(countries
                 .sorted { $0.population > $1.population }
-                .prefix(6))
+                .prefix(quantity))
     }
 
-    func getMostLargestCountries() -> [PostCountry] {
+    func getMostLargestCountries(quantity: Int) -> [PostCountry] {
         return Array(countries
                 .sorted { $0.area > $1.area }
-                .prefix(6))
+                .prefix(quantity))
     }
     
     // Function to get all countries by idRegion

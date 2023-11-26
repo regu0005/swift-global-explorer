@@ -4,38 +4,17 @@
 //
 //  Created by Gustavo Reguerin on 2023-11-14.
 //
+//  Project - Additional Resources
+//
+//  Figma design:
+//  https://www.figma.com/file/gZBCImnavOn29LMJpUtiuH/Countries-App?type=design&node-id=1%3A601&mode=dev
+//
+//  Admin System:
+//  https://countries.tusmodelos.com
+//  Test user:   test007
+//  Password:    test007
 
 import SwiftUI
-import SVGKit
-
-// The follow struct is used with every View that call an svg image
-struct SVGImageView: UIViewRepresentable {
-    var url: URL
-    var networkMonitor: NetworkMonitor
-
-    func makeUIView(context: Context) -> SVGKFastImageView {
-        let svgImageView = SVGKFastImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-        return svgImageView
-    }
-
-    func updateUIView(_ uiView: SVGKFastImageView, context: Context) {
-        // Load the image from URL
-        DispatchQueue.global().async {
-            print("Attempting to load SVG from URL: \(self.url)")
-            
-            if networkMonitor.isConnected {
-                if let svgImage = SVGKImage(contentsOf: self.url) {
-                    DispatchQueue.main.async {
-                        uiView.image = svgImage
-                    }
-                }
-            }
-//            else {
-//                print("Network not connected, skipping SVG load")
-//            }
-        }
-    }
-}
 
 struct ContentView: View {
     @StateObject var countriesDataModel = CountriesDataModel()
