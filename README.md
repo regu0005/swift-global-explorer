@@ -1,6 +1,6 @@
-# Countries Information Explore - iOS App
+# Global Explorer - iOS App
 
-Welcome to the repository for the **Countries Information Explore** iOS app. This application allows users to discover comprehensive information about various regions and countries, offering a user-friendly interface with detailed insights and visualizations.
+Welcome to the repository for the **Global Explorer** iOS app. This application allows users to discover comprehensive information about various regions and countries, offering a user-friendly interface with detailed insights and visualizations.
 
 ## About the Project
 
