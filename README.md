@@ -30,7 +30,7 @@ Content is efficiently managed and organized by an internal system developed in 
 
 You can explore the system using the following credentials:
 
-- **URL:** [[https://countries.tusmodelos.com](https://countries.tusmodelos.com)
+- **URL:** [https://countries.tusmodelos.com](https://countries.tusmodelos.com)
 - **User:** test007
 - **Password:** test007
 
@@ -55,7 +55,7 @@ Contributions are welcome! Feel free to fork the repository, make your improveme
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for details.
 
 ## Contact
 
