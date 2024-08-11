@@ -4,7 +4,7 @@ Welcome to the repository for the **Global Explorer** iOS app. This application 
 
 ## About the Project
 
-**Countries Information Explore** is an iOS application developed in Swift that integrates with the Countries Data API to provide users with a wealth of information about different countries. Users can explore population statistics, capital locations, and a variety of other details. Although the image gallery is currently under construction, the app already provides a rich user experience.
+**Global Explorer** is an iOS application developed in Swift that integrates with the Countries Data API to provide users with a wealth of information about different countries. Users can explore population statistics, capital locations, and a variety of other details. Although the image gallery is currently under construction, the app already provides a rich user experience.
 
 ### Key Features
 
@@ -36,7 +36,7 @@ You can explore the system using the following credentials:
 
 For more detailed information about the system, including the relational database design and other technical aspects, please visit:
 
-- **Portfolio:** [GlobalScape Explore - Create & Discover](https://portfolio.tusmodelos.com/greguerin/projects/33/globalscape-explore-create-discover)
+- **Portfolio:** [Global Explorer](https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer)
 
 ## Installation
 
@@ -44,7 +44,7 @@ To run this project locally:
 
 1. Clone this repository:
     ```sh
-    git clone https://github.com/yourusername/countries-information-explore.git
+    git clone https://github.com/regu0005/swift-global-explorer.git
     ```
 2. Open the project in Xcode.
 3. Build and run the app on your iOS simulator or device.
