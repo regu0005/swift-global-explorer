@@ -30,13 +30,13 @@ Content is efficiently managed and organized by an internal system developed in 
 
 You can explore the system using the following credentials:
 
-- **URL:** [Countries Information System](https://countries.tusmodelos.com)
+- **URL:** [[https://countries.tusmodelos.com](https://countries.tusmodelos.com)
 - **User:** test007
 - **Password:** test007
 
 For more detailed information about the system, including the relational database design and other technical aspects, please visit:
 
-- **Portfolio:** [Global Explorer](https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer)
+- **Project info:** [https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer](https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer)
 
 ## Installation
 
