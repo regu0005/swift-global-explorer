@@ -30,13 +30,13 @@ Content is efficiently managed and organized by an internal system developed in 
 
 You can explore the system using the following credentials:
 
-- **URL:** [https://buildings.tusmodelos.com](https://buildings.tusmodelos.com)
+- **URL:** [https://countries.tusmodelos.com](https://countries.tusmodelos.com)
 - **User:** test007
 - **Password:** test007
 
 For more detailed information about the system, including the relational database design and other technical aspects, please visit:
 
-- **Project info:** [https://portfolio.tusmodelos.com/greguerin/projects/39/doors-open-ottawa](https://portfolio.tusmodelos.com/greguerin/projects/39/doors-open-ottawa)
+- **Project info:** [https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer](https://portfolio.tusmodelos.com/greguerin/projects/33/global-explorer)
 
 ## Installation
 
